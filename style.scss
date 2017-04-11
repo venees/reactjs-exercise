@@ -1,0 +1,24 @@
+// generate random color
+
+@function randomizeColor(){
+  $color: (
+    octal: (
+      red: random(254),
+      green: random(254,
+      blue: random(254)
+    ));
+    @return $color;
+}
+
+@function color($base, $component) {
+  $color: randomizeColor();
+  @return map-get(map-get($color, $base), $component);
+}
+
+@function getRandomColor($format: NULL) {
+    @return rgb(color(octal, red), color(octal, green), color(octal, blue));
+}
+
+.random-color {
+  color: getRandomColor();
+}
